@@ -1,0 +1,37 @@
+header{
+    background-color: white;
+    color: black ;
+    padding: 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+header a{
+    color:black;
+}
+
+header img{
+    width: 50px;
+}
+
+header a.sginin{
+    color:white;
+    background-color: #cd0000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+header a.sginin:hover{
+    background-color: #ff5a3a;
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav span{
+    cursor: pointer;
+}
