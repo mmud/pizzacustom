@@ -1,0 +1,182 @@
+.orderdiv{
+    display: flex;
+}
+
+.orderdiv .right,.left{
+    flex: 1;
+    align-self: center;
+}
+
+.orderdiv .right .pizza{
+    width: 100%;
+    position: relative;
+}
+
+.orderdiv .right .pizza img{
+    width: 100%;
+}
+
+.orderdiv .right .pizza img.ing{
+    width: 100%;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%,-50%);
+}
+
+.orderdiv .left{
+    margin: 30px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.orderdiv .left h1{
+    text-align: center;
+    position: relative;
+}
+.orderdiv .left h1::after{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: black;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,6px);
+}
+
+.cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .cont img{
+    width: 100%;
+    
+  }
+  
+  .cont .option_item {
+    display: block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+  }
+  
+  .cont .option_item .checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .option_item .option_inner {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    color: #585c68;
+    display: block;
+    border: 5px solid transparent;
+    position: relative;
+  }
+  
+  .option_item .option_inner .icon {
+    margin-bottom: 10px;
+  }
+  
+  .option_item .option_inner .icon .fab {
+    font-size: 32px;
+  }
+  
+  .option_item .option_inner .name {
+    user-select: none;
+  }
+  
+  .option_item .checkbox:checked ~ .option_inner {
+    border-color: #cd0000;
+    color: #cd0000;
+  }
+  .option_item .checkbox ~ .option_inner {
+    border-color: #8080806e;
+    color: #8080806e;
+  }
+  
+  
+  
+  .option_item .option_inner .tickmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 20px solid;
+    border-color: #000 transparent transparent #000;
+    display: none;
+  }
+  
+  .option_item .option_inner .tickmark:before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: -18px;
+    width: 15px;
+    height: 5px;
+    border: 3px solid;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(-45deg);
+  }
+  
+  .option_item .checkbox:checked ~ .option_inner .tickmark {
+    display: block;
+  }
+  
+  .option_item .option_inner .tickmark {
+    border-color: #cd0000 transparent transparent #cd0000;
+  }
+
+  .comp{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #cd0000;
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .comp img{
+    width: 200px !important;
+  }
+
+  h1.header{
+    text-align: center;
+    position: relative;
+}
+h1.header::after{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: black;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,6px);
+}
+
+
+  @media (max-width:992px) {
+    .orderdiv{
+      flex-direction: column-reverse;
+    }
+    .orderdiv .pizza img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60% !important;
+    }
+  }
