@@ -1,3 +1,4 @@
+const { populate } = require("dotenv");
 const CartItem = require("../models/cartItem.model");
 const Pizza = require("../models/pizza.model");
 const User = require("../models/user.model");
@@ -23,7 +24,7 @@ exports.addtocart = async(req, res) => {
     
       const pizza = await Pizza.create({ Ings: ings, UserId: req.user._id });
 
-      const cartItem = await CartItem.create({ pizza: pizza._id, count });
+      const cartItem = await CartItem.create({ Pizza: pizza._id,Count: count });
 
       const user = await User.findByIdAndUpdate(
           req.user._id,
@@ -45,8 +46,7 @@ exports.addtocart = async(req, res) => {
 
 exports.deleteCartItem = async (req, res) => {
   try {
-      const { cartItemId } = req.params;
-
+      const { cartItemId } = req.body;
       if (!cartItemId) 
         return res.status(404).json({msg:"need data"});
       
@@ -80,7 +80,7 @@ exports.updateCartItemCount = async (req, res) => {
 
       const cartItem = await CartItem.findByIdAndUpdate(
           cartItemId,
-          { count }, 
+          { Count:count }, 
           { new: true } 
       );
 
@@ -99,8 +99,15 @@ exports.updateCartItemCount = async (req, res) => {
 };
 exports.getcart = async(req, res) => {
   try{
-    const user=await User.findById(req.user._id).populate("Cart","Pizza","Ings")
-
+    const user=await User.findById(req.user._id).populate({
+      path: 'Cart',
+      populate: {
+          path: 'Pizza',
+          populate:{
+            path:"Ings"
+          }
+      },
+  });
     return res.status(200).json(user.Cart);
   } 
   catch (error) {

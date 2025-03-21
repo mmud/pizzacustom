@@ -19,6 +19,7 @@ import ResetPassword from './screens/ResetPassword';
 import Admining from './screens/Admining.js';
 import Order from './screens/Order.js';
 import Myorders from './screens/Myorders.js';
+import CartPage from './screens/CartPage.js';
 
 function App() {
   const [islogedin, setislogedin] = useState(false);
@@ -26,6 +27,9 @@ function App() {
   const [cart, setcart] = useState(0);
   const cartincrement = () => {
     setcart(prevCount => prevCount + 1);
+  };
+  const cartdecrement = () => {
+    setcart(prevCount => prevCount - 1);
   };
   useEffect(() => {
     Axios.get( 
@@ -57,7 +61,7 @@ function App() {
   }, [])
 
   return (
-    <MyContext.Provider value={{ cart, setcart,cartincrement }}>
+    <MyContext.Provider value={{ cart, setcart,cartincrement,cartdecrement }}>
     <BrowserRouter>
       {
         loaded?
@@ -72,6 +76,7 @@ function App() {
             <Route path="/profile" exact element={islogedin?<Profile/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/order" exact element={islogedin?<Order/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/myorders" exact element={islogedin?<Myorders/>:<Navigate to="/login" replace={true}/>}/>
+            <Route path="/cart" exact element={islogedin?<CartPage/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/admin" exact element={islogedin&&parseJwt(localStorage.getItem("token"))?.role==="admin"?<Admin/>:<Error404/>} />
             <Route path="/admin/ing" exact element={islogedin&&parseJwt(localStorage.getItem("token"))?.role==="admin"?<Admining/>:<Error404/>} />
             <Route path="/register" exact element={!islogedin?<Register/>:<Navigate to="/" replace={true}/>} />
