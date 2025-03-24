@@ -22,6 +22,7 @@ import Myorders from './screens/Myorders.js';
 import CartPage from './screens/CartPage.js';
 import SuccessPage from './screens/SucessPage.js';
 import FailedPage from './screens/FailedPage.js';
+import AdminOrders from './screens/AdminOrders.js';
 
 function App() {
   const [islogedin, setislogedin] = useState(false);
@@ -79,10 +80,11 @@ function App() {
             <Route path="/cancel" exact element={<FailedPage/>} />
             <Route path="/profile" exact element={islogedin?<Profile/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/order" exact element={islogedin?<Order/>:<Navigate to="/login" replace={true}/>}/>
-            <Route path="/myorders" exact element={islogedin?<Myorders/>:<Navigate to="/login" replace={true}/>}/>
+            <Route path="/myorder" exact element={islogedin?<Myorders/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/cart" exact element={islogedin?<CartPage/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/admin" exact element={islogedin&&parseJwt(localStorage.getItem("token"))?.role==="admin"?<Admin/>:<Error404/>} />
             <Route path="/admin/ing" exact element={islogedin&&parseJwt(localStorage.getItem("token"))?.role==="admin"?<Admining/>:<Error404/>} />
+            <Route path="/admin/orders" exact element={islogedin&&parseJwt(localStorage.getItem("token"))?.role==="admin"?<AdminOrders/>:<Error404/>} />
             <Route path="/register" exact element={!islogedin?<Register/>:<Navigate to="/" replace={true}/>} />
             <Route path="/login" exact element={!islogedin?<Login/>:<Navigate to="/" replace={true}/>} />
           </Routes>

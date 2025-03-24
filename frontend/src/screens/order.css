@@ -168,6 +168,48 @@ h1.header::after{
     transform: translate(-50%,6px);
 }
 
+.myorder{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.myorder img{
+  width: 120px !important;
+}
+
+.myorder .comp{
+  box-shadow: none;
+  width: 180px !important;
+  margin: 0;
+  padding: 0;
+}
+
+.myorder .data{
+  padding: 20px;
+}
+
+.myorder .data p{
+  padding: 5px;
+}
+
+.myorder .data p span{
+  padding: 3px 10px;
+  border-radius: 50px;
+  color: white;
+
+}
+
+.myorder .orderdiv{
+  width: 300px !important;
+}
+
+.myorder .cart-details{
+  margin-left: 0;
+}
 
   @media (max-width:992px) {
     .orderdiv{
@@ -178,5 +220,9 @@ h1.header::after{
         margin-left: auto;
         margin-right: auto;
         width: 60% !important;
+    }
+    .myorder .pizza img
+    {
+      width: 120px !important;
     }
   }

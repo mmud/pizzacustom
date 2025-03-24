@@ -63,9 +63,7 @@ exports.checkout = async (req, res) => {
     });
 
     await Order.findByIdAndUpdate(order._id,{PaymentIntentId:session.id});
-      //await Promise.all(req.user.Cart.map((id) => CartItem.findByIdAndDelete(id)));
-      //await User.findByIdAndUpdate(user._id, { Cart: [] }, { new: true });
-    
+
     
     res.status(200).json({ url: session.url });
   } catch (error) {
@@ -92,8 +90,6 @@ exports.success = async (req, res) => {
     myorder.PaymentStatus = "paid";
     await myorder.save();
 
-
-    await Promise.all(req.user.Cart.map((id) => CartItem.findByIdAndDelete(id)));
     await User.findByIdAndUpdate(req.user._id, { Cart: [] }, { new: true });
     
     return res.status(200).json({
@@ -101,6 +97,61 @@ exports.success = async (req, res) => {
       msg: "Payment verified, order status updated, and cart cleared.",
       myorder,
     });
+  } catch (error) {
+    console.error("Error handling success endpoint:", error);
+    return res.status(500).json({ success: false, message: "Internal Server Error." });
+  }
+};
+
+
+exports.getmyorders = async (req, res) => {
+  try {
+    let num = req.query.num;
+    const orders=await Order.find({UserId:req.user.id}).skip((num-1)*10).limit(10).populate({
+      path: "Pizzas",
+      populate: {
+        path: "Pizza",
+        populate: {
+          path: "Ings",
+        },
+      },
+    });
+    return res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error handling myorders endpoint:", error);
+    return res.status(500).json({ success: false, message: "Internal Server Error." });
+  }
+};
+
+
+exports.getallorders = async (req, res) => {
+  try {
+    let num = req.query.num;
+    const orders=await Order.find().skip((num-1)*10).limit(10).populate({
+      path: "Pizzas",
+      populate: {
+        path: "Pizza",
+        populate: {
+          path: "Ings",
+        },
+      },
+    });
+    return res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error handling allorders endpoint:", error);
+    return res.status(500).json({ success: false, message: "Internal Server Error." });
+  }
+};
+
+exports.updateStatus = async (req, res) => {
+  try {
+    const { orderId,status } = req.body;
+    if (!orderId||!status) {
+      return res.status(400).json({ success: false, msg: "order ID is required." });
+    }
+    await Order.findByIdAndUpdate(orderId,{Status:status});
+   
+    return res.status(200).json("done");
   } catch (error) {
     console.error("Error handling success endpoint:", error);
     return res.status(500).json({ success: false, message: "Internal Server Error." });

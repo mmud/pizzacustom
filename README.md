@@ -59,8 +59,19 @@ CustomPizza is an interactive online platform that allows users to create and or
      - Create a `.env` file in the backend directory.
      - Add the following variables:
        ```
-       MONGO_URI=your_mongodb_connection_string
-       JWT_SECRET=your_jwt_secret
+        NODE_ENV = development
+        PORT = 3500
+        MONGO_URL = mongodb://localhost:27017/pizza
+        JWT_SECRET = secretpassword
+
+        FRONTURL = "http://localhost:3000"
+        HOST= smtp.gmail.com
+        SERVICE= gmail
+        EMAIL_PORT= 587
+        SECURE= true
+        EMAIL_FROM= 
+        EMAIL_PASSWORD = 
+        STRIPE_SECRET_KEY=stripesecretkey
        ```
    - Start the backend server:
      ```bash
@@ -88,9 +99,11 @@ CustomPizza is an interactive online platform that allows users to create and or
 ![Pizza Builder](images/checkout.png)
 ![Pizza Builder](images/paymentsuccess.png)
 ![Pizza Builder](images/paymentfailed.png)
+![Pizza Builder](images/myorders.png)
 
 ### Dashboard
 ![Pizza Builder](images/dashboard.png)
+![Pizza Builder](images/dashboard2.png)
 ---
 
 ## 📈 Achievements

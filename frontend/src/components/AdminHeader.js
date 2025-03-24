@@ -30,6 +30,13 @@ export default function AdminHeader() {
             <span className='title'>ingreadients</span>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/admin/orders">
+            <span className='aicon'><i className="fa-solid fa-pizza-slice"></i></span>
+            <span className='title'>orders</span>
+          </NavLink>
+        </li>
+        
       </ul>
     </div>
   )
