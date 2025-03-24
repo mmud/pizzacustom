@@ -20,6 +20,8 @@ import Admining from './screens/Admining.js';
 import Order from './screens/Order.js';
 import Myorders from './screens/Myorders.js';
 import CartPage from './screens/CartPage.js';
+import SuccessPage from './screens/SucessPage.js';
+import FailedPage from './screens/FailedPage.js';
 
 function App() {
   const [islogedin, setislogedin] = useState(false);
@@ -73,6 +75,8 @@ function App() {
             <Route path="/" exact element={<Home/>} />
             <Route path="/Error404" exact element={<Error404/>} />
             <Route path="/soon" exact element={<Soon/>} />
+            <Route path="/success" exact element={<SuccessPage/>} />
+            <Route path="/cancel" exact element={<FailedPage/>} />
             <Route path="/profile" exact element={islogedin?<Profile/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/order" exact element={islogedin?<Order/>:<Navigate to="/login" replace={true}/>}/>
             <Route path="/myorders" exact element={islogedin?<Myorders/>:<Navigate to="/login" replace={true}/>}/>

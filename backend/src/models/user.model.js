@@ -28,7 +28,6 @@ const UserSchema = mongoose.Schema({
     type:String,
     required:true
   },
-  SavedPizza:[{type:mongoose.Types.ObjectId,ref:'Pizza'}],
   Cart:[{type:mongoose.Types.ObjectId,ref:'CartItem'}],
   verified:{
       type:Boolean,

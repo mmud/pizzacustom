@@ -17,7 +17,7 @@ exports.addIng = async(req, res) => {
   try{
     const {Name,Level,Price,Imgbig,Imgsmall} =req.body;
     if(!Name||!Level || !Price || !Imgbig || !Imgsmall)
-        return res.status(404).json({msg:"need data"});
+      return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
 
         let timeq =Date.now ()+"q";
         let timea =Date.now ()+"a";
@@ -45,7 +45,7 @@ exports.addIng = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error creating user:', error);
+    console.error('Error adding Ing:', error);
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -73,7 +73,7 @@ exports.getIngs = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error creating user:', error);
+    console.error('Error getting Ings:', error);
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -87,7 +87,7 @@ exports.deleteIng = async(req, res) => {
         const ing = await ingm.findOne({_id:_id});
 
         if(!ing)
-          return res.status(400).json({msg:"الكود غير موجود"});
+          return res.status(400).json({msg:"ingredient does not exist."});
 
         await ingm.findOneAndDelete({_id:_id});
 
@@ -95,7 +95,7 @@ exports.deleteIng = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error creating user:', error);
+    console.error('Error deleting ing:', error);
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -107,7 +107,7 @@ exports.editIng = async(req, res) => {
   try{
     const {_id,Name,Level,Price,Imgbig,Imgsmall} =req.body;
     if(_id||!Name||!Level || !Price || !Imgbig || !Imgsmall)
-        return res.status(404).json({msg:"need data"});
+      return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
 
     let timeq =Date.now ()+"q";
     let timea =Date.now ()+"a";
@@ -138,7 +138,7 @@ exports.editIng = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error creating user:', error);
+    console.error('Error updating ing:', error);
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',

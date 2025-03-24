@@ -61,7 +61,6 @@ export default function Header() {
                 <img src={require("../images/empty pizza.png")} alt="avatar" className='avatar' onClick={()=>dropdown.current.classList.toggle("active")}/>
                 <div className='dropdown' ref={dropdown}>
                   {localStorage.getItem("token")!=="null"?<NavLink to="/myorder"> My Orders </NavLink>:""}
-                  {localStorage.getItem("token")!=="null"?<NavLink to="/saved"> Saved </NavLink>:""}
                   {parseJwt(localStorage.getItem("token"))?.role==="admin"?<NavLink to="/admin"> admin </NavLink>:""}
                   {localStorage.getItem("token")!=="null"?<span onClick={logout}>Logout</span>:""}
                   {localStorage.getItem("token")=="null"?<NavLink to="/login"> login </NavLink>:""}

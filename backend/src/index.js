@@ -18,5 +18,6 @@ connectDB();
 app.use("/api/auth", require("./routes/user.routes"));
 app.use("/api/ing", require("./routes/ing.routes"));
 app.use("/api/cart", require("./routes/cart.routes"));
+app.use("/api/order", require("./routes/order.routes"));
 
 app.use('/imgs', express.static(__dirname + '/imgs'));

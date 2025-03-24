@@ -83,8 +83,11 @@ CustomPizza is an interactive online platform that allows users to create and or
 ![Pizza Builder](images/create1.png)
 ![Pizza Builder](images/create2.png)
 
-### Order
-![Pizza Builder](images/orders.png)
+### Shopping Cart
+![Pizza Builder](images/shoppingcart.png)
+![Pizza Builder](images/checkout.png)
+![Pizza Builder](images/paymentsuccess.png)
+![Pizza Builder](images/paymentfailed.png)
 
 ### Dashboard
 ![Pizza Builder](images/dashboard.png)

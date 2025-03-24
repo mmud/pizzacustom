@@ -190,7 +190,7 @@ export default function Order() {
             +
           </button>
         </div>
-        <button onClick={submithandler}>order</button><i class="fa-solid fa-bookmark"></i> price: {price} EGP
+        <button onClick={submithandler}>order</button>price: {price} EGP
         </div>
       </div>
       <div className='right'>

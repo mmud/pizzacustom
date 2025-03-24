@@ -97,3 +97,23 @@
     background-color: darkred;
 }
   
+.total button{
+  border: none;
+  outline: none;
+  background-color: #cd0000;
+  padding: 10px 20px;
+  border-radius: 34px;
+  color: white;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.total{
+  background-color: #eee;
+  padding: 20px;
+  border-top: 1px solid #cd0000;;
+}
+
+.total p{
+  margin-bottom: 10px;
+}

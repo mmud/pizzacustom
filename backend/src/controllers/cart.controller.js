@@ -20,7 +20,7 @@ exports.addtocart = async(req, res) => {
   try{
     const {ings,count}=req.body;
     if(!ings||!count)
-      return res.status(404).json({msg:"need data"});
+      return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
     
       const pizza = await Pizza.create({ Ings: ings, UserId: req.user._id });
 
@@ -36,7 +36,7 @@ exports.addtocart = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error creating user:', error);
+    console.error('Error adding to cart:', error);
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -48,7 +48,7 @@ exports.deleteCartItem = async (req, res) => {
   try {
       const { cartItemId } = req.body;
       if (!cartItemId) 
-        return res.status(404).json({msg:"need data"});
+        return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
       
 
       const user = await User.findByIdAndUpdate(
@@ -75,7 +75,7 @@ exports.updateCartItemCount = async (req, res) => {
       const { cartItemId, count } = req.body;
 
       if (!cartItemId || !count ) 
-        return res.status(404).json({msg:"need data"});
+        return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
 
 
       const cartItem = await CartItem.findByIdAndUpdate(
