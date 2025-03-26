@@ -23,6 +23,7 @@ import CartPage from './screens/CartPage.js';
 import SuccessPage from './screens/SucessPage.js';
 import FailedPage from './screens/FailedPage.js';
 import AdminOrders from './screens/AdminOrders.js';
+import HomeLogedin from './screens/HomeLogedin.js';
 
 function App() {
   const [islogedin, setislogedin] = useState(false);
@@ -73,7 +74,7 @@ function App() {
           <Header/>
           <Routes>
             <Route path="*" exact element={<Error404/>} />
-            <Route path="/" exact element={<Home/>} />
+            <Route path="/" exact element={<HomeLogedin/>} />
             <Route path="/Error404" exact element={<Error404/>} />
             <Route path="/soon" exact element={<Soon/>} />
             <Route path="/success" exact element={<SuccessPage/>} />

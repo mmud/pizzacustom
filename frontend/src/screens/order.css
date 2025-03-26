@@ -7,16 +7,16 @@
     align-self: center;
 }
 
-.orderdiv .right .pizza{
+.pizza{
     width: 100%;
     position: relative;
 }
 
-.orderdiv .right .pizza img{
+.pizza img{
     width: 100%;
 }
 
-.orderdiv .right .pizza img.ing{
+.pizza img.ing{
     width: 100%;
     position: absolute;
     right: 50%;

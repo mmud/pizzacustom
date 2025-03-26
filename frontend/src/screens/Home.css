@@ -51,6 +51,27 @@
     background-color: #ff5a3a;
 }
 
+.rech1{
+  text-align: center;
+  position: relative;
+}
+.rech1::after{
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: black;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%,6px);
+}
+
+.reccont{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 @media (max-width:992px) {
   .landing{
     flex-direction: column-reverse;

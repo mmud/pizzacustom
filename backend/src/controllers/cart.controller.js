@@ -44,6 +44,32 @@ exports.addtocart = async(req, res) => {
   }
 };
 
+exports.addtocartfast = async(req, res) => {
+  try{
+    const {pizza,count}=req.body;
+    if(!pizza||!count)
+      return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
+    
+      const cartItem = await CartItem.create({ Pizza: pizza,Count: count });
+
+      const user = await User.findByIdAndUpdate(
+          req.user._id,
+          { $push: { Cart: cartItem._id } }, 
+          { new: true } 
+      );
+
+    return res.status(200).json("done");
+  } 
+  catch (error) {
+    // Catch Unexpected Errors
+    console.error('Error adding to cart:', error);
+    res.status(500).json({
+        success: false,
+        message: 'Internal Server Error.',
+    });
+  }
+};
+
 exports.deleteCartItem = async (req, res) => {
   try {
       const { cartItemId } = req.body;

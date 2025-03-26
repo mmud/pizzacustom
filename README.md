@@ -9,6 +9,10 @@ CustomPizza is an interactive online platform that allows users to create and or
 - **Custom Pizza Creation**: Users can build their pizzas with a variety of options for toppings, sauces, and crusts.
 - **Interactive User Experience**: Real-time updates to the price and preview of the selected pizza.
 - **Order Management**: Allows users to place, track, and manage orders.
+- **Shopping Cart**: A detailed shopping cart for reviewing and managing orders before checkout.
+- **Payment Gateway Integration**: Secure payment processing using Stripe.
+- **AI-Powered Recommendations**: Personalized pizza recommendations using an AI model.
+- **Dashboard for Orders**: A comprehensive dashboard for users to view and manage their orders.
 - **Responsive Design**: Optimized for desktop and mobile devices.
 
 ---
@@ -17,6 +21,8 @@ CustomPizza is an interactive online platform that allows users to create and or
 - **Frontend**: HTML, CSS, JavaScript, React.js
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
+- **AI Model**: Python, Flask, Scikit-learn
+- **Payment Integration**: Stripe API
 
 ---
 
@@ -65,6 +71,7 @@ CustomPizza is an interactive online platform that allows users to create and or
         JWT_SECRET = secretpassword
 
         FRONTURL = "http://localhost:3000"
+        AI_URL ="http://localhost:5000"
         HOST= smtp.gmail.com
         SERVICE= gmail
         EMAIL_PORT= 587
@@ -78,7 +85,22 @@ CustomPizza is an interactive online platform that allows users to create and or
      npm start
      ```
 
-4. Access the platform in your browser at `http://localhost:3000`.
+4. Set up the **AI Recommendation Server**:
+   - Open another terminal and navigate to the AI model folder:
+     ```bash
+     cd pizzacustom/"recommendation ai model"
+     ```
+   - Install required Python libraries:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Run the AI server:
+     ```bash
+     python model_api.py
+     ```
+
+5. Access the platform:
+- Open your browser and go to `http://localhost:3000`.
 
 ---
 
@@ -86,6 +108,9 @@ CustomPizza is an interactive online platform that allows users to create and or
 
 ### Home Page
 ![Pizza Builder](images/home.png)
+
+### Recommendations
+![Pizza Builder](images/recommendations.png)
 
 ### Login Page
 ![Pizza Builder](images/login.png)
@@ -109,6 +134,9 @@ CustomPizza is an interactive online platform that allows users to create and or
 ## 📈 Achievements
 - Enhanced customer engagement with a user-friendly pizza customization interface.
 - Improved order processing efficiency through seamless backend integration.
+- Implemented a secure payment gateway using Stripe for hassle-free transactions.
+- Developed an AI-powered recommendation system for personalized user experiences.
+- Provided users with an intuitive dashboard for managing their orders.
 
 ---
 
