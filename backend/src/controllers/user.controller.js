@@ -2,19 +2,22 @@ const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const sendEmail = require("../utils/sendEmail");
 const generateToken = require("../utils/jwtgenerate");
+const logger = require("../utils/logger");
 
-exports.getUsers = async(req, res) => {
-  try{
-  } 
-  catch (error) {
-    // Catch Unexpected Errors
-    console.error('Error creating user:', error);
-    res.status(500).json({
-        success: false,
-        message: 'Internal Server Error.',
-    });
-  }
-};
+// exports.getUsers = async(req, res) => {
+//   try{
+//   } 
+//   catch (error) {
+//     // Catch Unexpected Errors
+//     console.error('Error creating user:', error);
+//     logger.error(`Error creating user: ${error}`);
+    
+//     res.status(500).json({
+//         success: false,
+//         message: 'Internal Server Error.',
+//     });
+//   }
+// };
 
 exports.register=async(req,res)=>{
   try{
@@ -100,6 +103,8 @@ exports.register=async(req,res)=>{
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error creating user:', error);
+    logger.error(`Error creating user: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -134,6 +139,8 @@ exports.login = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error in login:', error);
+    logger.error(`Error in login: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -144,6 +151,7 @@ exports.login = async(req, res) => {
 exports.getme = async(req, res) => {
   try{
     const {_id,UserName,Email,Role,Cart}=await User.findById(req.user.id);
+    
     return res.status(200).json({
         _id:_id,
         UserName:UserName,
@@ -155,6 +163,8 @@ exports.getme = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error getting user:', error);
+    logger.error(`Error getting user: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -178,6 +188,8 @@ exports.verify = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error verifying email:', error);
+    logger.error(`Error verifying email: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -217,6 +229,8 @@ exports.resendverify = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error resend email verify:', error);
+    logger.error(`Error resend email verify: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -264,6 +278,8 @@ exports.forgetpassword = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error sending change password email', error);
+    logger.error(`Error sending change password email ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -298,6 +314,8 @@ exports.resetpassword = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error reseting password:', error);
+    logger.error(`Error reseting password: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -312,6 +330,8 @@ exports.isloggedin = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error isloggedin:', error);
+    logger.error(`Error isloggedin: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',

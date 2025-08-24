@@ -2,6 +2,7 @@ const { populate } = require("dotenv");
 const CartItem = require("../models/cartItem.model");
 const Pizza = require("../models/pizza.model");
 const User = require("../models/user.model");
+const logger = require("../utils/logger");
 
 // exports.getUsers = async(req, res) => {
 //   try{
@@ -37,6 +38,8 @@ exports.addtocart = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error adding to cart:', error);
+    logger.error(`Error adding to cart: ${error}`);
+    
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -62,7 +65,9 @@ exports.addtocartfast = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error adding to cart:', error);
+    console.error('Error adding fast to cart:', error);
+    logger.error(`Error adding fast to cart: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -89,6 +94,8 @@ exports.deleteCartItem = async (req, res) => {
 
   } catch (error) {
       console.error('Error deleting cart item:', error);
+      logger.error(`Error deleting cart item: ${error}`);
+
       res.status(500).json({
           success: false,
           message: 'Internal Server Error.',
@@ -117,6 +124,8 @@ exports.updateCartItemCount = async (req, res) => {
 
   } catch (error) {
       console.error('Error updating cart item count:', error);
+      logger.error(`Error updating cart item count: ${error}`);
+
       res.status(500).json({
           success: false,
           message: 'Internal Server Error.',
@@ -138,7 +147,9 @@ exports.getcart = async(req, res) => {
   } 
   catch (error) {
     // Catch Unexpected Errors
-    console.error('Error creating user:', error);
+    console.error('Error getting user cart:', error);
+    logger.error(`Error getting user cart: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',

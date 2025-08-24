@@ -13,6 +13,8 @@ CustomPizza is an interactive online platform that allows users to create and or
 - **Payment Gateway Integration**: Secure payment processing using Stripe.
 - **AI-Powered Recommendations**: Personalized pizza recommendations using an AI model.
 - **Dashboard for Orders**: A comprehensive dashboard for users to view and manage their orders.
+- **Caching with Redis**: Faster performance with Redis caching for frequently accessed data.
+- **Logging with Morgan & Winston**: Track requests and store structured logs.
 - **Responsive Design**: Optimized for desktop and mobile devices.
 
 ---
@@ -21,8 +23,10 @@ CustomPizza is an interactive online platform that allows users to create and or
 - **Frontend**: HTML, CSS, JavaScript, React.js
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
+- **Caching**: Redis
 - **AI Model**: Python, Flask, Scikit-learn
 - **Payment Integration**: Stripe API
+- **Logging**: Morgan, Winston
 
 ---
 
@@ -31,6 +35,7 @@ CustomPizza is an interactive online platform that allows users to create and or
 ### Prerequisites
 - Node.js and npm installed
 - MongoDB installed or access to a MongoDB Atlas cluster
+- Windows users: Install Docker for Redis setup
 
 ### Steps
 1. Clone the repository:
@@ -85,7 +90,22 @@ CustomPizza is an interactive online platform that allows users to create and or
      npm start
      ```
 
-4. Set up the **AI Recommendation Server**:
+
+4. **Redis** Setup Instructions
+
+## Windows Users:
+1. Install Docker Desktop from https://www.docker.com/products/docker-desktop.
+2. Start Docker Desktop.
+3. Run Redis container:
+   ```bash
+   docker run -d --name redis-server -p 6379:6379 redis
+   ```
+
+## Linux/Mac Users:
+- Install Redis directly using your package manager OR use Docker as above.
+
+
+5. Set up the **AI Recommendation Server**:
    - Open another terminal and navigate to the AI model folder:
      ```bash
      cd pizzacustom/"recommendation ai model"
@@ -99,8 +119,21 @@ CustomPizza is an interactive online platform that allows users to create and or
      python model_api.py
      ```
 
-5. Access the platform:
+6. Access the platform:
 - Open your browser and go to `http://localhost:3000`.
+
+---
+
+# Logging Details
+
+## Morgan
+- Logs HTTP requests in the console for easy debugging.
+
+## Winston
+- Stores structured logs in:
+  - logs/combined.log: All logs for analysis.
+  - logs/error.log: Only error logs for debugging.
+
 
 ---
 

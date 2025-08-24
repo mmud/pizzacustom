@@ -1,4 +1,5 @@
 const ingm = require("../models/ing.model");
+const logger = require("../utils/logger");
 
 // exports.getUsers = async(req, res) => {
 //   try{
@@ -46,6 +47,8 @@ exports.addIng = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error adding Ing:', error);
+    logger.error(`Error adding Ing: ${error}`);
+    
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -74,6 +77,8 @@ exports.getIngs = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error getting Ings:', error);
+    logger.error(`Error getting Ing: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -96,6 +101,8 @@ exports.deleteIng = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error deleting ing:', error);
+    logger.error(`Error deleting Ing: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',
@@ -139,6 +146,8 @@ exports.editIng = async(req, res) => {
   catch (error) {
     // Catch Unexpected Errors
     console.error('Error updating ing:', error);
+    logger.error(`Error updating Ing: ${error}`);
+
     res.status(500).json({
         success: false,
         message: 'Internal Server Error.',

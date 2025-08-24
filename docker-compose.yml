@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_server
+    ports:
+      - "6379:6379"
+
+  #the front end will be with the backend when I build the react project
+  backend:
+    build: ./backend
+    container_name: backend_server
+    ports:
+      - "3500:3500"
+    environment:
+      NODE_ENV: development
+      PORT: 3500
+      MONGO_URL: mongodb://mongodb:27017/pizza
+      JWT_SECRET: secretpassword
+      FRONTURL: "http://localhost"
+      AI_URL: "http://localhost:5000"
+      HOST: smtp.gmail.com
+      SERVICE: gmail
+      EMAIL_PORT: 587
+      SECURE: "true"
+      EMAIL_FROM: youremail@gmail.com
+      EMAIL_PASSWORD: yourpassword
+      STRIPE_SECRET_KEY: stripesecretkey
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - mongodb
+      - ai
+
+  ai:
+    build: ./recommendation_ai_model
+    container_name: ai_server
+    ports:
+      - "5000:5000"
+
+volumes:
+  mongo_data:

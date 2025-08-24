@@ -2,6 +2,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const User = require("../models/user.model");
 const CartItem = require("../models/cartItem.model");
 const Order = require("../models/order.model");
+const logger = require("../utils/logger");
 
 exports.checkout = async (req, res) => {
   try {
@@ -68,6 +69,8 @@ exports.checkout = async (req, res) => {
     res.status(200).json({ url: session.url });
   } catch (error) {
     console.error("Error during checkout:", error);
+    logger.error(`Error during checkout: ${error}`);
+    
     res.status(500).json({ success: false, message: "Internal Server Error." });
   }
 };
@@ -99,6 +102,8 @@ exports.success = async (req, res) => {
     });
   } catch (error) {
     console.error("Error handling success endpoint:", error);
+    logger.error(`Error handling success endpoint: ${error}`);
+    
     return res.status(500).json({ success: false, message: "Internal Server Error." });
   }
 };
@@ -119,6 +124,8 @@ exports.getmyorders = async (req, res) => {
     return res.status(200).json(orders);
   } catch (error) {
     console.error("Error handling myorders endpoint:", error);
+        logger.error(`Error handling myorders endpoint: ${error}`);
+
     return res.status(500).json({ success: false, message: "Internal Server Error." });
   }
 };
@@ -139,6 +146,8 @@ exports.getallorders = async (req, res) => {
     return res.status(200).json(orders);
   } catch (error) {
     console.error("Error handling allorders endpoint:", error);
+    logger.error(`Error handling allorders endpoint: ${error}`);
+
     return res.status(500).json({ success: false, message: "Internal Server Error." });
   }
 };
@@ -153,7 +162,9 @@ exports.updateStatus = async (req, res) => {
    
     return res.status(200).json("done");
   } catch (error) {
-    console.error("Error handling success endpoint:", error);
+    console.error("Error handling update status:", error);
+    logger.error(`Error handling update status: ${error}`);
+
     return res.status(500).json({ success: false, message: "Internal Server Error." });
   }
 };
