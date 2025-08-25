@@ -130,9 +130,7 @@ CustomPizza is an interactive online platform that allows users to create and or
 - Logs HTTP requests in the console for easy debugging.
 
 ## Winston
-- Stores structured logs in:
-  - logs/combined.log: All logs for analysis.
-  - logs/error.log: Only error logs for debugging.
+- Stores structured logs in app.log
 
 
 ---
