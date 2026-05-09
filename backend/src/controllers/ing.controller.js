@@ -113,21 +113,22 @@ exports.deleteIng = async(req, res) => {
 exports.editIng = async(req, res) => {
   try{
     const {_id,Name,Level,Price,Imgbig,Imgsmall} =req.body;
-    if(_id||!Name||!Level || !Price || !Imgbig || !Imgsmall)
+    console.log(req.body);
+    if(!_id||!Name||!Level || !Price || !Imgbig || !Imgsmall)
       return res.status(400).json({msg:"All fields are required. Please make sure no field is left empty."});
 
     let timeq =Date.now ()+"q";
     let timea =Date.now ()+"a";
-    if(Qimg.includes("data:image/*;base64,"))
+    if(Imgbig.includes("data:image/*;base64,"))
     {
     var base64Dataq = Imgbig.replace("data:image/*;base64,", "");
     require("fs").writeFile(__dirname+`/../imgs/${timeq}.png`, base64Dataq, 'base64', function(err) {
         console.log(err);
       });      
     }
-    if(Aimg.includes("data:image/*;base64,"))
+    if(Imgsmall.includes("data:image/*;base64,"))
     {
-    var base64Dataa = Imagsmall.replace("data:image/*;base64,", "");
+    var base64Dataa = Imgsmall.replace("data:image/*;base64,", "");
     require("fs").writeFile(__dirname+`/../imgs/${timea}.png`, base64Dataa, 'base64', function(err) {
         console.log(err);
       }); 
